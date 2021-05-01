@@ -16,6 +16,10 @@ namespace PruebaTecnica.Data
             DbContextOptions options,
             IOptions<OperationalStoreOptions> operationalStoreOptions) : base(options, operationalStoreOptions)
         {
+
         }
+        public DbSet<Paciente> Paciente { get; set; }
+        public DbSet<Resultado> Resultado { get; set; }
+        public DbSet<Analitica> Analitica { get; set; }
     }
 }
