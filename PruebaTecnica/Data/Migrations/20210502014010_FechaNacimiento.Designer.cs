@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PruebaTecnica.Data;
 
 namespace PruebaTecnica.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210502014010_FechaNacimiento")]
+    partial class FechaNacimiento
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -379,7 +381,7 @@ namespace PruebaTecnica.Data.Migrations
                     b.Property<string>("Doctor")
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<string>("FechaResultado")
+                    b.Property<DateTime>("FechaResultado")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("PacienteID")

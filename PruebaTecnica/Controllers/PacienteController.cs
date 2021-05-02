@@ -10,6 +10,7 @@ using PruebaTecnica.Models;
 
 namespace PruebaTecnica.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class PacienteController : ControllerBase
@@ -29,10 +30,10 @@ namespace PruebaTecnica.Controllers
         }
 
         // GET: api/Paciente/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Paciente>> GetPaciente(int id)
+        [HttpGet("{PacienteID}")]
+        public async Task<ActionResult<Paciente>> GetPaciente(string PacienteID)
         {
-            var paciente = await _context.Paciente.FindAsync(id);
+            var paciente = await _context.Paciente.FindAsync(PacienteID);
 
             if (paciente == null)
             {
@@ -42,67 +43,5 @@ namespace PruebaTecnica.Controllers
             return paciente;
         }
 
-        // PUT: api/Paciente/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutPaciente(int id, Paciente paciente)
-        {
-            if (id != paciente.Id)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(paciente).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!PacienteExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
-        }
-
-        // POST: api/Paciente
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
-        public async Task<ActionResult<Paciente>> PostPaciente(Paciente paciente)
-        {
-            _context.Paciente.Add(paciente);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetPaciente", new { id = paciente.Id }, paciente);
-        }
-
-        // DELETE: api/Paciente/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeletePaciente(int id)
-        {
-            var paciente = await _context.Paciente.FindAsync(id);
-            if (paciente == null)
-            {
-                return NotFound();
-            }
-
-            _context.Paciente.Remove(paciente);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
-        }
-
-        private bool PacienteExists(int id)
-        {
-            return _context.Paciente.Any(e => e.Id == id);
-        }
     }
 }

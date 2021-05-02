@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +11,7 @@ using PruebaTecnica.Models;
 
 namespace PruebaTecnica.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class ResultadoController : ControllerBase
@@ -42,67 +44,5 @@ namespace PruebaTecnica.Controllers
             return resultado;
         }
 
-        // PUT: api/Resultado/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
-        public async Task<IActionResult> PutResultado(int id, Resultado resultado)
-        {
-            if (id != resultado.Id)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(resultado).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ResultadoExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
-        }
-
-        // POST: api/Resultado
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
-        public async Task<ActionResult<Resultado>> PostResultado(Resultado resultado)
-        {
-            _context.Resultado.Add(resultado);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetResultado", new { id = resultado.Id }, resultado);
-        }
-
-        // DELETE: api/Resultado/5
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteResultado(int id)
-        {
-            var resultado = await _context.Resultado.FindAsync(id);
-            if (resultado == null)
-            {
-                return NotFound();
-            }
-
-            _context.Resultado.Remove(resultado);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
-        }
-
-        private bool ResultadoExists(int id)
-        {
-            return _context.Resultado.Any(e => e.Id == id);
-        }
     }
 }

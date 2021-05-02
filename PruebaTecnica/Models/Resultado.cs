@@ -18,6 +18,6 @@ namespace PruebaTecnica.Models
         [Column(TypeName = "nvarchar(100)")]
         public string CentroMedico { get; set; }
 
-        public DateTime FechaResultado { get; set; }
+        public string FechaResultado { get; set; }
     }
 }

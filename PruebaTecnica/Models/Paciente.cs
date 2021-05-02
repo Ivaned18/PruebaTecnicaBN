@@ -24,7 +24,7 @@ namespace PruebaTecnica.Models
         [Column(TypeName = "nvarchar(10)")]
         public string Sexo { get; set; }
 
-        public DateTime FechaNacimiento { get; set; }
+        public string FechaNacimiento { get; set; }
 
     }
 }

@@ -1,0 +1,26 @@
+﻿<h1 id="tableLabel">Paciente <span *ngIf="pacientes">{{ pacientes.nombre }} {{ pacientes.apellido }}</span></h1>
+
+<!--<p>This component demonstrates fetching data from the server.</p>-->
+
+<p *ngIf="!pacientes"><em>Loading...</em></p>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="pacientes">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>IdUser</th>
+            <th>Telefono</th>
+            <th>Sexo</th>
+            <th>Fecha de Nacimiento</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{{ pacientes.id }}</td>
+            <td>{{ pacientes.pacienteID }}</td>
+            <td>{{ pacientes.telefono }}</td>
+            <td>{{ pacientes.sexo }}</td>
+            <td>{{ pacientes.fechaNacimiento }}</td>
+        </tr>
+    </tbody>
+</table>
