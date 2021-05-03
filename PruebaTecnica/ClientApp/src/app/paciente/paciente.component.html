@@ -1,71 +1,63 @@
-﻿<h3>Paciente <span *ngIf="pacientes">{{ pacientes.nombre }} {{ pacientes.apellido }}</span></h3>
-<p>Paciente <span *ngIf="pacientes">{{ pacientes.nombre }} {{ pacientes.apellido }}</span></p>
+﻿
+<h1 *ngIf="!pacientes"><em>Cargando...</em></h1>
 
-<!--<p>This component demonstrates fetching data from the server.</p>-->
+<h3>Paciente <span *ngIf="pacientes">{{ pacientes.nombre }} {{ pacientes.apellido }}</span></h3>
+<p><span *ngIf="pacientes">{{ pacientes.sexo }} | {{ pacientes.fechaNacimiento }} | {{ pacientes.telefono }}</span></p>
 
-<p *ngIf="!pacientes"><em>Loading...</em></p>
-
-<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="pacientes">
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>IdUser</th>
-            <th>Telefono</th>
-            <th>Sexo</th>
-            <th>Fecha de Nacimiento</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>{{ pacientes.id }}</td>
-            <td>{{ pacientes.pacienteID }}</td>
-            <td>{{ pacientes.telefono }}</td>
-            <td>{{ pacientes.sexo }}</td>
-            <td>{{ pacientes.fechaNacimiento }}</td>
-        </tr>
-    </tbody>
-</table>
 
 <table class='table table-striped' aria-labelledby="tableLabel" *ngIf="resultados">
     <thead>
         <tr>
             <th>ID</th>
-            <th>PacienteID</th>
             <th>Centro Medico</th>
             <th>Doctor</th>
             <th>Fecha de Resultados</th>
+            <th>Opciones</th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let resultado of resultados">
             <td>{{ resultado.id }}</td>
-            <td>{{ resultado.pacienteID }}</td>
             <td>{{ resultado.centroMedico }}</td>
             <td>{{ resultado.doctor }}</td>
             <td>{{ resultado.fechaResultado }}</td>
+            <td><button type="button" class="btn btn-primary" id="AnaliticaButtom">Ver</button></td>
         </tr>
     </tbody>
 </table>
 
 
 
-<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="analiticas">
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>ResultadoID</th>
-            <th>Tipo</th>
-            <th>Valor</th>
-            <th>Rango</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let analitica of analiticas">
-            <td>{{ analitica.id }}</td>
-            <td>{{ analitica.resultadoID }}</td>
-            <td>{{ analitica.tipo }}</td>
-            <td>{{ analitica.valor }}</td>
-            <td>{{ analitica.rango }}</td>
-        </tr>
-    </tbody>
-</table>
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="ModalAnalitica">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <h3>Analitica del Resultado</h3>
+
+            <table class='table table-striped' aria-labelledby="tableLabel" *ngIf="analiticas">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>ResultadoID</th>
+                        <th>Tipo</th>
+                        <th>Valor</th>
+                        <th>Rango</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let analitica of analiticas">
+                        <td>{{ analitica.id }}</td>
+                        <td>{{ analitica.resultadoID }}</td>
+                        <td>{{ analitica.tipo }}</td>
+                        <td>{{ analitica.valor }}</td>
+                        <td>{{ analitica.rango }}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+
+
+
