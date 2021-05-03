@@ -24,3 +24,48 @@
         </tr>
     </tbody>
 </table>
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="resultados">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>PacienteID</th>
+            <th>Centro Medico</th>
+            <th>Doctor</th>
+            <th>Fecha de Resultados</th>
+        </tr>
+    </thead>
+    <tbody>
+        centroMedico
+        <tr *ngFor="let resultado of resultados">
+            <td>{{ resultado.id }}</td>
+            <td>{{ resultado.pacienteID }}</td>
+            <td>{{ resultado.centroMedico }}</td>
+            <td>{{ resultado.doctor }}</td>
+            <td>{{ resultado.fechaResultado }}</td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="analiticas">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>ResultadoID</th>
+            <th>Tipo</th>
+            <th>Valor</th>
+            <th>Rango</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let analitica of analiticas">
+            <td>{{ analitica.id }}</td>
+            <td>{{ analitica.resultadoID }}</td>
+            <td>{{ analitica.tipo }}</td>
+            <td>{{ analitica.valor }}</td>
+            <td>{{ analitica.rango }}</td>
+        </tr>
+    </tbody>
+</table>

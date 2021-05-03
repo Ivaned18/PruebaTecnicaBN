@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -31,10 +32,11 @@ namespace PruebaTecnica.Controllers
         }
 
         // GET: api/Resultado/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Resultado>> GetResultado(int id)
+        [HttpGet("{PacienteID}")]
+        public async Task<ActionResult<Resultado>> GetResultado(string PacienteID)
         {
-            var resultado = await _context.Resultado.FindAsync(id);
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var resultado = await _context.Resultado.FindAsync(userId);
 
             if (resultado == null)
             {

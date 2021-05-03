@@ -29,10 +29,10 @@ namespace PruebaTecnica.Controllers
         }
 
         // GET: api/Analitica/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Analitica>> GetAnalitica(int id)
+        [HttpGet("{ResultadoID}")]
+        public async Task<ActionResult<Analitica>> GetAnalitica(int ResultadoID)
         {
-            var analitica = await _context.Analitica.FindAsync(id);
+            var analitica = await _context.Analitica.FindAsync(ResultadoID);
 
             if (analitica == null)
             {

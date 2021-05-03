@@ -12,6 +12,7 @@ using PruebaTecnica.Models;
 
 namespace PruebaTecnica.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class PacienteController : ControllerBase

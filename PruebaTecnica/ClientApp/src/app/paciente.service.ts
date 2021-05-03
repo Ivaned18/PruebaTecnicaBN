@@ -4,13 +4,30 @@ import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 
 interface Paciente {
-  id: string;
+  id: number;
   pacienteID: string;
   nombre: string;
   apellido: string;
   telefono: string;
   sexo: string;
   fechaNacimiento: string;
+}
+
+interface Resultados {
+  id: number;
+  pacienteID: string;
+  doctor: string;
+  centroMedico: string;
+  fechaResultado: string;
+}
+
+
+interface Analitica {
+  id: number;
+  resultadoID: string;
+  tipo: string;
+  valor: string;
+  rango: string;
 }
 
 @Injectable({
@@ -37,7 +54,22 @@ export class PacienteService {
       )
   }
 
+  getResultados(): Observable<Resultados> {
+    return this.httpClient.get<Resultados>(this.endPoint + '/api/Resultado/?PacienteID=')
+      .pipe(
+        retry(1),
+        catchError(this.httpError)
+      )
+  }
 
+
+  getAnaliticas(): Observable<Analitica> {
+    return this.httpClient.get<Analitica>(this.endPoint + '/api/Analitica/?ResultadoID=1')
+      .pipe(
+        retry(1),
+        catchError(this.httpError)
+      )
+  }
 
 
 
