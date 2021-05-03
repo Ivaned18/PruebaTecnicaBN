@@ -10,8 +10,8 @@ namespace PruebaTecnica.Models
         [Key]
         public int Id { get; set; }
 
-        [Column(TypeName = "nvarchar(50)")]
-        public string ResultadoID { get; set; }
+        [Column(TypeName = "int(10)")]
+        public int ResultadoID { get; set; }
 
         [Column(TypeName = "nvarchar(20)")]
         public string Tipo { get; set; }

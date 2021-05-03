@@ -30,19 +30,36 @@ namespace PruebaTecnica.Controllers
             return await _context.Analitica.ToListAsync();
         }
 
+
+
         // GET: api/Analitica/5
         [HttpGet("{ResultadoID}")]
-        public async Task<ActionResult<Analitica>> GetAnalitica(int ResultadoID)
+        public async Task<List<Analitica>> GetAnalitica(int ResultadoID)
         {
-            var analitica = await _context.Analitica.FindAsync(ResultadoID);
-
-            if (analitica == null)
-            {
-                return NotFound();
-            }
+            var analitica = (from a in _context.Analitica where a.ResultadoID == ResultadoID select a).ToList(); 
 
             return analitica;
         }
 
+
+
     }
 }
+
+
+
+
+
+//// GET: api/Analitica/5
+//[HttpGet("{ResultadoID}")]
+//public async Task<ActionResult<Analitica>> GetAnalitica(int ResultadoID)
+//{
+//    var analitica = await _context.Analitica.FindAsync(ResultadoID);
+
+//    if (analitica == null)
+//    {
+//        return NotFound();
+//    }
+
+//    return analitica;
+//}

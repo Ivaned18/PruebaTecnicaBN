@@ -185,6 +185,8 @@
     <None Remove="ClientApp\src\assets\sass\_elements.scss" />
     <None Remove="ClientApp\src\assets\sass\_feature_part.scss" />
     <None Remove="ClientApp\src\assets\sass\_blog.scss" />
+    <None Remove="ClientApp\src\bootstrap.bundle.min.js" />
+    <None Include="..\.editorconfig" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

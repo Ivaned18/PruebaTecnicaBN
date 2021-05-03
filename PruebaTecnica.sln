@@ -5,6 +5,11 @@ VisualStudioVersion = 16.0.809.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PruebaTecnica", "PruebaTecnica\PruebaTecnica.csproj", "{63A38808-2E46-4D90-A84E-2C9B8F4A4DC1}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{DE1B9565-CE7F-4410-B1BD-0A5CC26B8A6D}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

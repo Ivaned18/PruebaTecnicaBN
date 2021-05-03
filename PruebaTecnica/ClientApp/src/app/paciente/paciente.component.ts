@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PacienteService } from "../paciente.service";
 import * as $ from 'jquery';
+import "bootstrap";
 
 
 @Component({
@@ -19,15 +20,17 @@ export class PacienteComponent implements OnInit{
   ngOnInit() {
     this.fetchPacientes()
     this.fetchResultados()
-    this.fetchAnaliticas(1)
 
     $(document).ready(function () {
-      $('#AnaliticaButtom').click(
-        $('#ModalAnalitica').modal('show')
-      );
-
 
     });
+  }
+
+
+  VerModal(id) {
+    console.log(id);
+    this.fetchAnaliticas(id)
+    $('#ModalAnalitica').modal('show')
   }
 
   fetchPacientes() {

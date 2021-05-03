@@ -21,7 +21,7 @@
             <td>{{ resultado.centroMedico }}</td>
             <td>{{ resultado.doctor }}</td>
             <td>{{ resultado.fechaResultado }}</td>
-            <td><button type="button" class="btn btn-primary" id="AnaliticaButtom">Ver</button></td>
+            <td><button type="button" class="btn btn-primary" (click)="VerModal(ResultadoID = resultado.id)">Ver</button></td>
         </tr>
     </tbody>
 </table>

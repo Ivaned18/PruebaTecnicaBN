@@ -24,7 +24,7 @@ interface Resultados {
 
 interface Analitica {
   id: number;
-  resultadoID: string;
+  resultadoID: number;
   tipo: string;
   valor: string;
   rango: string;
@@ -64,7 +64,7 @@ export class PacienteService {
 
 
   getAnaliticas(ResultadoID): Observable<Analitica> {
-    return this.httpClient.get<Analitica>(this.endPoint + '/api/Analitica/?ResultadoID=' + ResultadoID)
+    return this.httpClient.get<Analitica>(this.endPoint + '/api/Analitica/?resultadoID=' + ResultadoID)
       .pipe(
         retry(1),
         catchError(this.httpError)
