@@ -63,8 +63,8 @@ export class PacienteService {
   }
 
 
-  getAnaliticas(): Observable<Analitica> {
-    return this.httpClient.get<Analitica>(this.endPoint + '/api/Analitica/?ResultadoID=1')
+  getAnaliticas(ResultadoID): Observable<Analitica> {
+    return this.httpClient.get<Analitica>(this.endPoint + '/api/Analitica/?ResultadoID=' + ResultadoID)
       .pipe(
         retry(1),
         catchError(this.httpError)

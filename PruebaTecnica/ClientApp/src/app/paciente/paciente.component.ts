@@ -13,15 +13,12 @@ export class PacienteComponent implements OnInit{
   analiticas: any = [];
 
 
-
   constructor(public pacienteService: PacienteService) { }
 
   ngOnInit() {
     this.fetchPacientes()
     this.fetchResultados()
-    this.fetchAnaliticas()
-
-
+    this.fetchAnaliticas(1)
   }
 
   fetchPacientes() {
@@ -34,12 +31,11 @@ export class PacienteComponent implements OnInit{
   fetchResultados() {
     return this.pacienteService.getResultados().subscribe((data: {}) => {
       this.resultados = data;
-
     })
   }
 
-  fetchAnaliticas() {
-    return this.pacienteService.getAnaliticas().subscribe((data: {}) => {
+  fetchAnaliticas(ResultadoID) {
+    return this.pacienteService.getAnaliticas(ResultadoID).subscribe((data: {}) => {
       this.analiticas = data;
       console.log(data);
     })
