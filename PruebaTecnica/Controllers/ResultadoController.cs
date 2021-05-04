@@ -35,7 +35,9 @@ namespace PruebaTecnica.Controllers
         public async Task<List<Resultado>> GetResultado(string pacienteID)
         {
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var resultado = (from a in _context.Resultado where a.PacienteID == userId select a).ToList();
+            
+            var resultado = _context.Resultado.Where(x => x.PacienteID == userId).ToList();
+
 
             return resultado;
         }

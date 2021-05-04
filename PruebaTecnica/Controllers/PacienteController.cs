@@ -10,7 +10,7 @@ using PruebaTecnica.Models;
 
 namespace PruebaTecnica.Controllers
 {
-    [Authorize]
+
     [Route("api/[controller]")]
     [ApiController]
     public class PacienteController : ControllerBase
@@ -29,15 +29,22 @@ namespace PruebaTecnica.Controllers
             return await _context.Paciente.ToListAsync();
         }
 
-        // GET: api/Paciente/5
-        [HttpGet("{PacienteID}")]
-        public async Task<List<Paciente>> GetPaciente(string pacienteID)
+
+
+        [HttpGet("one/{PacienteID}")]
+        public async Task<ActionResult<Paciente>> GetPaciente(string PacienteID)
         {
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var paciente = (from a in _context.Paciente where a.PacienteID == userId select a).ToList();
+            var paciente = _context.Paciente.Where(x => x.PacienteID == userId).FirstOrDefault();
+
+            if (paciente == null)
+            {
+                return NotFound();
+            }
 
             return paciente;
         }
+
 
     }
 }

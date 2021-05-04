@@ -57,7 +57,7 @@ export class PacienteService {
   }  
 
   getPaciente(): Observable<Paciente> {
-    return this.httpClient.get<Paciente>(this.endPoint + '/api/Paciente/?PacienteID=')
+    return this.httpClient.get<Paciente>(this.endPoint + '/api/Paciente/one/c6e69e82-77c6-54a0-bab2-6cb90ee8554c')
       .pipe(
         retry(1),
         catchError(this.httpError)
@@ -65,7 +65,7 @@ export class PacienteService {
   }
 
   getResultados(): Observable<Resultados> {
-    return this.httpClient.get<Resultados>(this.endPoint + '/api/Resultado/?PacienteID=')
+    return this.httpClient.get<Resultados>(this.endPoint + '/api/Resultado/c6e69e82-77c6-54a0-bab2-6cb90ee8554c')
       .pipe(
         retry(1),
         catchError(this.httpError)
