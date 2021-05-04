@@ -21,7 +21,12 @@
             <td>{{ resultado.centroMedico }}</td>
             <td>{{ resultado.doctor }}</td>
             <td>{{ resultado.fechaResultado }}</td>
-            <td><button type="button" class="btn btn-primary" (click)="VerModal(ResultadoID = resultado.id)">Ver</button></td>
+            <td>
+                <button type="button" class="btn btn-primary" (click)="VerModal(ResultadoID = resultado.id)">Ver</button> |
+                <button type="button" class="btn btn-primary" (click)="Descargar(ResultadoID = resultado.id)">Descargar</button> |
+                <button type="button" class="btn btn-primary" (click)="Imprimir(ResultadoID = resultado.id)">Imprimir</button> 
+
+            </td>
         </tr>
     </tbody>
 </table>
@@ -33,7 +38,7 @@
         <div class="modal-content">
 
             <div style="padding:15px;">
-                <h4>Analitica del Resultado ID<span *ngIf="resultado">{{ resultado.id }} | {{ resultado.fechaResultado }}</span></h4>
+                <h4>Analitica del Resultado ID <span *ngIf="resultado">#{{ resultado.id }} | {{ resultado.fechaResultado }}</span></h4>
                 <p *ngIf="resultado"> {{ resultado.centroMedico }} - Doctor/a  {{ resultado.doctor }}</p>
             </div>
 
