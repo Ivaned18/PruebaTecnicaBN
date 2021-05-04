@@ -21,15 +21,6 @@ namespace PruebaTecnica.Controllers
             _context = context;
         }
 
-        // GET: api/Paciente
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Paciente>>> GetPaciente()
-        {
-            return await _context.Paciente.ToListAsync();
-        }
-
-
-
         [HttpGet("one/{PacienteID}")]
         public async Task<ActionResult<Paciente>> GetPaciente(string PacienteID)
         {

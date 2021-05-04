@@ -21,14 +21,6 @@ namespace PruebaTecnica.Controllers
             _context = context;
         }
 
-        // GET: api/Analitica
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Analitica>>> GetAnalitica()
-        {
-            return await _context.Analitica.ToListAsync();
-        }
-
-
         // GET: api/Analitica/5
         [HttpGet("{ResultadoID}")]
         public async Task<List<Analitica>> GetAnalitica(int ResultadoID)
@@ -37,8 +29,6 @@ namespace PruebaTecnica.Controllers
 
             return analitica;
         }
-
-
 
     }
 }

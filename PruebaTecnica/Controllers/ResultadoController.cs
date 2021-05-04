@@ -22,14 +22,6 @@ namespace PruebaTecnica.Controllers
             _context = context;
         }
 
-        // GET: api/Resultado
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Resultado>>> GetResultado()
-        {
-            return await _context.Resultado.ToListAsync();
-        }
-
-
         // GET: api/Resultado/5
         [HttpGet("{PacienteID}")]
         public async Task<List<Resultado>> GetResultado(string pacienteID)
@@ -41,8 +33,6 @@ namespace PruebaTecnica.Controllers
 
             return resultado;
         }
-
-
 
         // GET: api/Resultado/5
         [HttpGet("one/{id}")]
