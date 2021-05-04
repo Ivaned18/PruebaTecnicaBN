@@ -22,6 +22,16 @@ interface Resultados {
 }
 
 
+interface Resultado {
+  id: number;
+  pacienteID: string;
+  doctor: string;
+  centroMedico: string;
+  fechaResultado: string;
+}
+
+
+
 interface Analitica {
   id: number;
   resultadoID: number;
@@ -62,9 +72,18 @@ export class PacienteService {
       )
   }
 
+  getResultado(ResultadoID): Observable<Resultado> {
+    return this.httpClient.get<Resultado>(this.endPoint + '/api/Resultado/one/' + ResultadoID)
+      .pipe(
+        retry(1),
+        catchError(this.httpError)
+      )
+  }
+
+
 
   getAnaliticas(ResultadoID): Observable<Analitica> {
-    return this.httpClient.get<Analitica>(this.endPoint + '/api/Analitica/?resultadoID=' + ResultadoID)
+    return this.httpClient.get<Analitica>(this.endPoint + '/api/Analitica/' + ResultadoID)
       .pipe(
         retry(1),
         catchError(this.httpError)

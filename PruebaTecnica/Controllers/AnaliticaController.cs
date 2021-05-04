@@ -1,9 +1,7 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PruebaTecnica.Data;
@@ -31,7 +29,6 @@ namespace PruebaTecnica.Controllers
         }
 
 
-
         // GET: api/Analitica/5
         [HttpGet("{ResultadoID}")]
         public async Task<List<Analitica>> GetAnalitica(int ResultadoID)
@@ -45,21 +42,3 @@ namespace PruebaTecnica.Controllers
 
     }
 }
-
-
-
-
-
-//// GET: api/Analitica/5
-//[HttpGet("{ResultadoID}")]
-//public async Task<ActionResult<Analitica>> GetAnalitica(int ResultadoID)
-//{
-//    var analitica = await _context.Analitica.FindAsync(ResultadoID);
-
-//    if (analitica == null)
-//    {
-//        return NotFound();
-//    }
-
-//    return analitica;
-//}

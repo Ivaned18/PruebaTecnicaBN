@@ -32,13 +32,15 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
 
-            <h3>Analitica del Resultado</h3>
+            <div style="padding:15px;">
+                <h4>Analitica del Resultado ID<span *ngIf="resultado">{{ resultado.id }} | {{ resultado.fechaResultado }}</span></h4>
+                <p *ngIf="resultado"> {{ resultado.centroMedico }} - Doctor/a  {{ resultado.doctor }}</p>
+            </div>
+
 
             <table class='table table-striped' aria-labelledby="tableLabel" *ngIf="analiticas">
                 <thead>
                     <tr>
-                        <th>ID</th>
-                        <th>ResultadoID</th>
                         <th>Tipo</th>
                         <th>Valor</th>
                         <th>Rango</th>
@@ -46,8 +48,6 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let analitica of analiticas">
-                        <td>{{ analitica.id }}</td>
-                        <td>{{ analitica.resultadoID }}</td>
                         <td>{{ analitica.tipo }}</td>
                         <td>{{ analitica.valor }}</td>
                         <td>{{ analitica.rango }}</td>

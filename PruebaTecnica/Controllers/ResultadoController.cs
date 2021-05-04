@@ -1,10 +1,8 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PruebaTecnica.Data;
@@ -12,7 +10,7 @@ using PruebaTecnica.Models;
 
 namespace PruebaTecnica.Controllers
 {
-    [Authorize]
+
     [Route("api/[controller]")]
     [ApiController]
     public class ResultadoController : ControllerBase
@@ -31,12 +29,24 @@ namespace PruebaTecnica.Controllers
             return await _context.Resultado.ToListAsync();
         }
 
+
         // GET: api/Resultado/5
         [HttpGet("{PacienteID}")]
-        public async Task<ActionResult<Resultado>> GetResultado(string PacienteID)
+        public async Task<List<Resultado>> GetResultado(string pacienteID)
         {
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var resultado = await _context.Resultado.FindAsync(userId);
+            var resultado = (from a in _context.Resultado where a.PacienteID == userId select a).ToList();
+
+            return resultado;
+        }
+
+
+
+        // GET: api/Resultado/5
+        [HttpGet("one/{id}")]
+        public async Task<ActionResult<Resultado>> GetResultado(int id)
+        {
+            var resultado = await _context.Resultado.FindAsync(id);
 
             if (resultado == null)
             {
@@ -45,6 +55,7 @@ namespace PruebaTecnica.Controllers
 
             return resultado;
         }
+
 
     }
 }

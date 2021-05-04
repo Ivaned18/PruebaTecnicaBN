@@ -14,6 +14,7 @@ export class PacienteComponent implements OnInit{
   resultados: any = [];
   analiticas: any = [];
 
+  resultado: any = [];
 
   constructor(public pacienteService: PacienteService) { }
 
@@ -28,8 +29,10 @@ export class PacienteComponent implements OnInit{
 
 
   VerModal(id) {
-    console.log(id);
     this.fetchAnaliticas(id)
+    this.fetchResultado(id)
+
+
     $('#ModalAnalitica').modal('show')
   }
 
@@ -49,9 +52,17 @@ export class PacienteComponent implements OnInit{
   fetchAnaliticas(ResultadoID) {
     return this.pacienteService.getAnaliticas(ResultadoID).subscribe((data: {}) => {
       this.analiticas = data;
-      console.log(data);
     })
   }
+
+
+  fetchResultado(ResultadoID) {
+    return this.pacienteService.getResultado(ResultadoID).subscribe((data: {}) => {
+      this.resultado = data;
+
+    })
+  }
+
 
 
 }
